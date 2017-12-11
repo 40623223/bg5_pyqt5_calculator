@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project finalproject -->
+<<<<<<< HEAD
 <!-- Saved: 2017-12-04, 14:43:16 -->
+=======
+<!-- Saved: 2017-12-04, 14:49:37 -->
+>>>>>>> 576ac11b90ef16198e4ac5805d1afd2581a945d4
 <!-- Copyright (C) 2017 ,  -->
 <Project version="5.1">
   <Language>en_US</Language>
