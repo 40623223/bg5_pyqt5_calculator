@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project finalproject -->
-<<<<<<< HEAD
-<!-- Saved: 2017-12-04, 14:43:16 -->
-=======
-<!-- Saved: 2017-12-04, 14:49:37 -->
->>>>>>> 576ac11b90ef16198e4ac5805d1afd2581a945d4
+<!-- Saved: 2017-11-28, 16:39:43 -->
 <!-- Copyright (C) 2017 ,  -->
 <Project version="5.1">
-  <Language>en_US</Language>
-  <Hash>6bae9a5eb44c94dd5efec2990938eea01cafa86c</Hash>
+  <Language></Language>
+  <Hash>5d33d9299c914b63a19e9547d7508fd5f4f03077</Hash>
   <ProgLanguage mixed="0">Python3</ProgLanguage>
   <ProjectType>PyQt5</ProjectType>
   <Version>0.1</Version>
@@ -18,7 +14,6 @@
   <Eol index="0"/>
   <Sources>
     <Source>__init__.py</Source>
-    <Source>ref.py</Source>
     <Source>run.py</Source>
     <Source>ui/Dialog.py</Source>
     <Source>ui/Ui_Dialog.py</Source>
@@ -29,7 +24,10 @@
   <Translations/>
   <Resources/>
   <Interfaces/>
-  <Others/>
+  <Others>
+    <Other>ui/dialog_class_name.txt</Other>
+    <Other>ui/dialog_widget_obj_name.txt</Other>
+  </Others>
   <MainScript>run.py</MainScript>
   <Vcs>
     <VcsType>None</VcsType>
