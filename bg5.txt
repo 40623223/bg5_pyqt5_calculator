@@ -4,6 +4,7 @@ bg5 任務分配
 學員:
 40623223-數字按鍵的 signals 與 slots 設定
 40623224-加減鍵的 signals 與 slogts 設定
-40623232
-40623231
-40623233
+40623232-乘除鍵的 signals 與 slogts 設定
+40623231-小數點鍵的 signals 與 slogts 設定
+40623233-等於鍵的 signals 與 slogts 設定
+40623222-總教練
