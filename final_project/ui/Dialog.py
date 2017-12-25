@@ -174,12 +174,4 @@ class Dialog(QDialog, Ui_Dialog):
             if rightOperand == 0.0:
                 return False
             self.factorSoFar /= rightOperand    
-<<<<<<< HEAD
         return True 
-=======
-        return True    
- 
-        elif pendingOperator == "-":
-            self.sumSoFar -= rightOperand
->>>>>>> dae013d9c23299a2f42e8243715bb3c88ac80478
->>>>>>> be0f99ffb4416880d8269fa63fad26ebd1ee8aa1
