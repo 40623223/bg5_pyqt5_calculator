@@ -27,10 +27,18 @@ class Dialog(QDialog, Ui_Dialog):
         digits = [self.one,  self.two,  self.three, \
             self.four,  self.five,  self.six, \
             self.seven,  self.eight,  self.nine,  self.zero]
+        shushu = [self.plusButton,  self.minusButton]
             
         for i in digits:
             i.clicked.connect(self.digitClicked)
         self.clearButton.clicked.connect(self.clear)
+        
+        for i in shushu:
+            i.clicked.connect(self.additiveOperatorClicked)
+        
+        self.pendingAdditiveOperator = ''
+        
+        self.sumSoFar = 0
         
         self.waitingForOperand = True
         
@@ -64,8 +72,20 @@ class Dialog(QDialog, Ui_Dialog):
         
     def additiveOperatorClicked(self):
         '''加或減按下後進行的處理方法'''
-        pass
+        #pass
+        clickedButton = self.sender()
+        clickedOperator = clickedButton.text()
+        operand = float(self.display.text())
         
+        if self.pendingAdditiveOperator:
+            if not self.calculate(operand, self.pendingAdditiveOperator):
+                self.abortOperation()
+                return
+            self.display.setText(str(self.sumSoFar))
+        else:
+            self.sumSoFar = operand    
+        self.pendingAdditiveOperator = clickedOperator
+        self.waitingForOperand = True
     def multiplicativeOperatorClicked(self):
         '''乘或除按下後進行的處理方法'''
         #pass
@@ -104,9 +124,14 @@ class Dialog(QDialog, Ui_Dialog):
         #pass
         self.waitingForOperand = True
         self.display.setText('0')
+        
     def clearAll(self):
         '''全部清除鍵按下後的處理方法'''
-        pass
+        #pass
+        self.sumSoFar = 0.0
+        self.pendingAdditiveOperator = ''
+        self.waitingForOperand = True
+        self.display.setText('0')
         
     def clearMemory(self):
         '''清除記憶體鍵按下後的處理方法'''
@@ -137,6 +162,7 @@ class Dialog(QDialog, Ui_Dialog):
         #pass
         if pendingOperator == "+":
             self.sumSoFar += rightOperand
+<<<<<<< HEAD
         elif pendingOperator == "-":
             self.sumSoFar -= rightOperand   
         elif pendingOperator == "*":
@@ -146,3 +172,8 @@ class Dialog(QDialog, Ui_Dialog):
                 return False
             self.factorSoFar /= rightOperand    
         return True    
+=======
+ 
+        elif pendingOperator == "-":
+            self.sumSoFar -= rightOperand
+>>>>>>> dae013d9c23299a2f42e8243715bb3c88ac80478
