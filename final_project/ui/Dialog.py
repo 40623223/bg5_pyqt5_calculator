@@ -30,6 +30,7 @@ class Dialog(QDialog, Ui_Dialog):
         for i in digits:
             i.clicked.connect(self.digitClicked)
         self.clearButton.clicked.connect(self.clear)
+        self.waitingForOperand = True
         
         shushu = [self.plusButton,  self.minusButton]
         for i in shushu:
@@ -39,14 +40,14 @@ class Dialog(QDialog, Ui_Dialog):
         
         self.sumSoFar = 0
         
-        self.waitingForOperand = True
-        
         self.display.setText('0')\
                 
         multiply_divide = [self.timesButton,  self.divisionButton]
         for i in multiply_divide:
             i.clicked.connect(self.multiplicativeOperatorClicked)
         self.pendingMultiplicativeOperator = ''
+        
+        self.backspaceButton.clicked.connect(self.backspaceClicked)
         
     def digitClicked(self):
         '''
@@ -116,7 +117,15 @@ class Dialog(QDialog, Ui_Dialog):
         
     def backspaceClicked(self):
         '''回復鍵按下的處理方法'''
-        pass
+        #pass
+        if self.waitingForOperand:
+            return
+        text = self.display.text()[:-1]
+        if not text:
+            text="0"
+            self.waitingForOperand = True
+         
+        self.display.setText(text)   
         
     def clear(self):
         '''清除鍵按下後的處理方法'''
@@ -171,6 +180,4 @@ class Dialog(QDialog, Ui_Dialog):
             self.factorSoFar /= rightOperand    
         return True    
  
-        elif pendingOperator == "-":
-            self.sumSoFar -= rightOperand
->>>>>>> dae013d9c23299a2f42e8243715bb3c88ac80478
+
