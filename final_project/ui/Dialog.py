@@ -27,15 +27,12 @@ class Dialog(QDialog, Ui_Dialog):
         digits = [self.one,  self.two,  self.three, \
             self.four,  self.five,  self.six, \
             self.seven,  self.eight,  self.nine,  self.zero]
-<<<<<<< HEAD
         shushu = [self.plusButton,  self.minusButton]
         
         self.clearAllButton.clicked.connect(self.clearAll)
         
         self.clearButton.clicked.connect(self.clear)
-        
-=======
->>>>>>> be0f99ffb4416880d8269fa63fad26ebd1ee8aa1
+
         for i in digits:
             i.clicked.connect(self.digitClicked)
         
