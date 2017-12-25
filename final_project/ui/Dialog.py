@@ -34,8 +34,12 @@ class Dialog(QDialog, Ui_Dialog):
         
         self.waitingForOperand = True
         
-        self.display.setText('0')
-        
+        self.display.setText('0')\
+                
+        multiply_divide = [self.timesButton,  self.divisionButton]
+        for i in multiply_divide:
+            i.clicked.connect(self.multiplicativeOperatorClicked)
+        self.pendingMultiplicativeOperator = ''
         
     def digitClicked(self):
         '''
@@ -56,7 +60,7 @@ class Dialog(QDialog, Ui_Dialog):
             
     def unaryOperatorClicked(self):
         '''單一運算元按下後處理方法'''
-        pass
+        #pass
         
     def additiveOperatorClicked(self):
         '''加或減按下後進行的處理方法'''
@@ -64,7 +68,20 @@ class Dialog(QDialog, Ui_Dialog):
         
     def multiplicativeOperatorClicked(self):
         '''乘或除按下後進行的處理方法'''
-        pass
+        #pass
+        clickedButton = self.sender()
+        clickedOperator = clickedButton.text()
+        operand = float(self.display.text())
+        if self.pendingMultiplicativeOperator:
+            if not self.calculate(operand, self.pendingMultiplicativeOperator):
+                self.abortOperation()
+                return
+                self.display.setText(str(self.factorSoFar))
+        else:
+            self.factorSoFar = operand
+        self.pendingMultiplicativeOperator = clickedOperator
+        self.waitingForOperand = True
+       
         
     def equalClicked(self):
         '''等號按下後的處理方法'''
@@ -115,6 +132,17 @@ class Dialog(QDialog, Ui_Dialog):
         '''中斷運算'''
         pass
         
-    def calculate(self):
+    def calculate(self, rightOperand, pendingOperator):
         '''計算'''
-        pass
+        #pass
+        if pendingOperator == "+":
+            self.sumSoFar += rightOperand
+        elif pendingOperator == "-":
+            self.sumSoFar -= rightOperand   
+        elif pendingOperator == "*":
+            self.factorSoFar *= rightOperand
+        elif pendingOperator == "/":
+            if rightOperand == 0.0:
+                return False
+            self.factorSoFar /= rightOperand    
+        return True    
