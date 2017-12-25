@@ -27,12 +27,11 @@ class Dialog(QDialog, Ui_Dialog):
         digits = [self.one,  self.two,  self.three, \
             self.four,  self.five,  self.six, \
             self.seven,  self.eight,  self.nine,  self.zero]
-        shushu = [self.plusButton,  self.minusButton]
-            
         for i in digits:
             i.clicked.connect(self.digitClicked)
         self.clearButton.clicked.connect(self.clear)
         
+        shushu = [self.plusButton,  self.minusButton]
         for i in shushu:
             i.clicked.connect(self.additiveOperatorClicked)
         
@@ -162,7 +161,6 @@ class Dialog(QDialog, Ui_Dialog):
         #pass
         if pendingOperator == "+":
             self.sumSoFar += rightOperand
-<<<<<<< HEAD
         elif pendingOperator == "-":
             self.sumSoFar -= rightOperand   
         elif pendingOperator == "*":
@@ -172,7 +170,6 @@ class Dialog(QDialog, Ui_Dialog):
                 return False
             self.factorSoFar /= rightOperand    
         return True    
-=======
  
         elif pendingOperator == "-":
             self.sumSoFar -= rightOperand
