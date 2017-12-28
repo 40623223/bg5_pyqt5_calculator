@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-6.0.dtd">
 <!-- eric6 tasks file for project finalproject -->
+<<<<<<< HEAD
 <!-- Saved: 2017-12-28, 21:49:46 -->
+=======
+<!-- Saved: 2017-12-25, 15:58:30 -->
+>>>>>>> 320087d22ae9957771e87583e48328005e6459dd
 <Tasks version="6.0">
   <ProjectScanFilter></ProjectScanFilter>
 </Tasks>
