@@ -61,6 +61,7 @@ class Dialog(QDialog, Ui_Dialog):
         shushu = [self.plusButton,  self.minusButton]
         for i in shushu:
             i.clicked.connect(self.additiveOperatorClicked)
+        self.waitingForOperand = True
         
         multiply_divide = [self.timesButton,  self.divisionButton]
         for i in multiply_divide:
@@ -85,12 +86,33 @@ class Dialog(QDialog, Ui_Dialog):
             
     def unaryOperatorClicked(self):
         '''單一運算元按下後處理方法'''
-        #pass
+        pass
         
     def additiveOperatorClicked(self):
         '''加或減按下後進行的處理方法'''
-        pass
-        
+        #pass
+        clickedButton = self.sender()
+        clickedOperator = clickedButton.text()
+        operand = float(self.display.text())
+        if self.pendingMultiplicativeOperator:
+            if not self.calculate(operand, self.pendingMultiplicativeOperator):
+                self.abortOperation()
+                return
+ 
+            self.display.setText(str(self.factorSoFar))
+            operand = self.factorSoFar
+            self.factorSoFar = 0.0
+            self.pendingMultiplicativeOperator = ''
+            
+        if self.pendingAdditiveOperator:
+            if not self.calculate(operand, self.pendingAdditiveOperator):
+                self.abortOperation()
+                return
+                self.display.setText(str(self.sumSoFar))
+        else:
+            self.sumSoFar = operand
+            self.pendingAdditiveOperator = clickedOperator
+            self.waitingForOperand = True
     def multiplicativeOperatorClicked(self):
         '''乘或除按下後進行的處理方法'''
         #pass
