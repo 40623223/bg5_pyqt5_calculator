@@ -24,6 +24,8 @@ class Dialog(QDialog, Ui_Dialog):
         self.setupUi(self)
         '''以下為使用者自行編寫程式碼區'''
         
+        self.equalButton.clicked.connect(self.equalClicked)
+        
         self.clearAllButton.clicked.connect(self.clearAll)
         
         self.clearButton.clicked.connect(self.clear)
@@ -61,6 +63,7 @@ class Dialog(QDialog, Ui_Dialog):
         shushu = [self.plusButton,  self.minusButton]
         for i in shushu:
             i.clicked.connect(self.additiveOperatorClicked)
+        
         self.waitingForOperand = True
         
         multiply_divide = [self.timesButton,  self.divisionButton]
@@ -108,7 +111,7 @@ class Dialog(QDialog, Ui_Dialog):
             if not self.calculate(operand, self.pendingAdditiveOperator):
                 self.abortOperation()
                 return
-                self.display.setText(str(self.sumSoFar))
+            self.display.setText(str(self.sumSoFar))
         else:
             self.sumSoFar = operand
             self.pendingAdditiveOperator = clickedOperator
@@ -210,8 +213,9 @@ class Dialog(QDialog, Ui_Dialog):
         
     def abortOperation(self):
         '''中斷運算'''
-        pass
-        
+        #pass
+        self.clearAll()
+        self.display.setText("fuck")
     def calculate(self, rightOperand, pendingOperator):
         '''計算'''
         #pass
@@ -224,3 +228,6 @@ class Dialog(QDialog, Ui_Dialog):
         elif pendingOperator == "/":
             if rightOperand == 0.0:
                 return False
+            self.factorSoFar /= rightOperand
+            
+        return True
