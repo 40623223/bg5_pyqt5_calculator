@@ -60,8 +60,8 @@ class Dialog(QDialog, Ui_Dialog):
         
         #unaryOperator = [self.squareRootButton, self.powerButton,  self.reciprocalButton]        
 
-        shushu = [self.plusButton,  self.minusButton]
-        for i in shushu:
+        additiveOperatorClicked = [self.plusButton,  self.minusButton]
+        for i in additiveOperatorClicked:
             i.clicked.connect(self.additiveOperatorClicked)
         
         self.waitingForOperand = True
