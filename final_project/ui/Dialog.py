@@ -24,6 +24,8 @@ class Dialog(QDialog, Ui_Dialog):
         self.setupUi(self)
         '''以下為使用者自行編寫程式碼區'''
         
+        self.pointButton.clicked.connect(self.pointClicked)
+        
         self.equalButton.clicked.connect(self.equalClicked)
         
         self.clearAllButton.clicked.connect(self.clearAll)
@@ -160,7 +162,14 @@ class Dialog(QDialog, Ui_Dialog):
         self.waitingForOperand = True    
     def pointClicked(self):
         '''小數點按下後的處理方法'''
-        pass
+        #pass
+        if self.waitingForOperand:
+            self.display.setText('0')
+ 
+        if "." not in self.display.text():
+            self.display.setText(self.display.text() + ".")
+ 
+        self.waitingForOperand = False
         
     def changeSignClicked(self):
         '''變號鍵按下後的處理方法'''
