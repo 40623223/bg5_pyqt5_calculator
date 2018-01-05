@@ -34,6 +34,8 @@ class Dialog(QDialog, Ui_Dialog):
         
         self.sumSoFar = 0
         
+        self.changeSignButton.clicked.connect(self.changeSignClicked)
+        
         self.waitingForOperand = True
         
         self.display.setText('0')\
@@ -163,6 +165,15 @@ class Dialog(QDialog, Ui_Dialog):
     def changeSignClicked(self):
         '''變號鍵按下後的處理方法'''
         pass
+        text = self.display.text()
+        value = float(text)
+ 
+        if value > 0.0:
+            text = "-" + text
+        elif value < 0.0:
+            text = text[1:]
+ 
+        self.display.setText(text)
         
     def backspaceClicked(self):
         '''回復鍵按下的處理方法'''
