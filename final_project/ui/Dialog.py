@@ -173,7 +173,7 @@ class Dialog(QDialog, Ui_Dialog):
         
     def changeSignClicked(self):
         '''變號鍵按下後的處理方法'''
-        pass
+        #pass
         text = self.display.text()
         value = float(text)
  
